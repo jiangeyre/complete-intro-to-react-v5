@@ -1,18 +1,30 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { Link } from '@reach/router';
 import { css } from '@emotion/core';
 
-const NavBar = () => (
+
+const NavBar = () => {}
+    const [padding, setPadding] = useState(15);
+
+    const color = "pink";
+
+    return(
     <header
+        onClick={() => setPadding(padding + 15)}
         css={css`
-            background-color: #333;
-            padding: 15px;
+            background-color: ${color};
+            padding: ${padding}px;
         `}
     >
         <Link to="/">Adopt Me!</Link>
-        <span aria-label="logo">🐱</span>
+        <span
+            css={css`
+                font-size: 60px;
+            `} 
+            role="img" aria-label="logo">🐱</span>
     </header>
-)
+    );
+};
 
 export default NavBar;
 
