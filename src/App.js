@@ -2,11 +2,12 @@ import React, { useState, lazy, Suspense } from "react";
 import ReactDOM from "react-dom";
 import { Router } from "@reach/router";
 // import Details from "./Details";
-import SearchParams from "./SearchParams";
+// import SearchParams from "./SearchParams";
 import ThemeContext from "./ThemeContext";
 // import NavBar from "./NavBar";
 
 const Details = lazy(() => import('./Details'));
+const SearchParams = lazy(() => import('./SearchParams'));
 //dynamic import
 
 const App = () => {
