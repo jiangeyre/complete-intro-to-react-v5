@@ -1,16 +1,16 @@
-import React, { useState } from 'react';
+import React, { useState, FunctionComponent } from 'react';
 
-const useDropDownPrac = (label, defaultState, options) => {
-    const [state, useState] = useState(defaultState);
+const useDropDownPrac = (label: string, defaultState: string, options: string[]) => {
+    const [state, updateState] = useState(defaultState);
     const id = `use-dropdown-prac-${label.replace(" ", "").toLowerCase()}`;
-    const DropdownPrac = () => {
+    const DropdownPrac: FunctionComponent = () => {
         <label htmlFor={id}>
             {label}
             <select
                 id={id}
                 value={state}
-                onChange={e => setState(e.target.value)}
-                onBlur={e => setState(e.target.value)}
+                onChange={e => updateState(e.target.value)}
+                onBlur={e => updateState(e.target.value)}
                 disabled={options.length === 0}
                 >
                 <option>All</option>
@@ -23,7 +23,7 @@ const useDropDownPrac = (label, defaultState, options) => {
         </label>
     };
 
-    return [state, DropdownPrac, setState];
+    return [state, DropdownPrac, updateState];
 }
 
 export default useDropDownPrac;
