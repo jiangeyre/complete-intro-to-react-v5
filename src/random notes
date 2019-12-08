@@ -28,3 +28,7 @@ Disadvantages of using TypeScript over JavaScript
 Generally TypeScript takes time to compile the code.
 TypeScript does not support abstract classes.
 
++++++++
+
+TSLint is a static code analysis tool used in software development for checking Typescript code quality, if Typescript source code complies with coding rules. TSLint checks your TypeScript code for readability, maintainability, and functionality errors.
+
