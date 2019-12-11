@@ -7,7 +7,7 @@ import { navigate } from "@reach/router";
 import Modal from "./Modal";
 
 
-class DetailsPrac extends React.Component {
+class DetailsPrac extends React.Component<RouteComponentProps<{ id: string }>> {
     // constructor(props){
     //     super(props);
 
@@ -15,12 +15,26 @@ class DetailsPrac extends React.Component {
     //         loading: true
     //     };
     // }
-    state = { loading: true, showModal: false };
+    public state = { 
+      loading: true, 
+      showModal: false, 
+      name: "", 
+      animal: "", 
+      location: "", 
+      description: "", 
+      media: [] as Photo[], 
+      url: "", 
+      breed: ""  
+    };
 //
-    componentDidMount () {
+    public componentDidMount () {
+      if(!this.props.id){
+        navigate("/");
+        return;
+      }
         //this.props from parents
         pet
-        .animal(this.props.id)
+        .animal(+this.props.id)
         .then(({ animal }) => {
           this.setState({
             name: animal.name,
@@ -35,7 +49,7 @@ class DetailsPrac extends React.Component {
             loading: false
           });
         })
-        .catch(err => this.setState({ error: err }));
+        .catch((err: Error) => this.setState({ error: err }));
     }
     toggleModal = () => this.setState({ showModal: !this.state.showModal });
     adopt = () => navigate(this.state.url);
@@ -90,7 +104,7 @@ class DetailsPrac extends React.Component {
 }
 
 
-export default function DetailsPracWithErrorBoundary(props) {
+export default function DetailsPracWithErrorBoundary(props: RouteComponentProps<{ id: string }>) {
     return (
         <ErrorBoundaryPrac>
             {/* spread operators: spread the props across details */}
